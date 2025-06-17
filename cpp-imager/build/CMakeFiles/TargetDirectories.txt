@@ -1,0 +1,4 @@
+/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/build/CMakeFiles/cpp_imager.dir
+/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/build/CMakeFiles/test_image_processor.dir
+/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/build/CMakeFiles/edit_cache.dir
+/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/build/CMakeFiles/rebuild_cache.dir
