@@ -1,5 +1,5 @@
 #include "image_processor.hpp"
-#include "nvjpeg_compressor.hpp"
+#include <opencv2/opencv.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-        // 2. Convert to RGB (needed for nvJPEG)
+        // 2. Convert to RGB (needed for OpenCV)
         processor.convertBGRtoRGB();
 
         // 3. Get the raw pixel data and dimensions
@@ -26,15 +26,14 @@ int main(int argc, char* argv[]) {
         int height = processor.getHeight();
         int channels = processor.getChannels();
 
-        // 4. Use this data with nvJPEG compressor
-        NVJPEGCompressor compressor;
-        auto compressed_data = compressor.compress(
-            raw_data,
-            width,
-            height,
-            channels,
-            90  // quality
-        );
+        // 4. Use this data with OpenCV to compress to JPEG
+        std::vector<uchar> compressed_data;
+        std::vector<int> params = {cv::IMWRITE_JPEG_QUALITY, 90};
+        cv::Mat rgb_image(height, width, CV_8UC3, const_cast<unsigned char*>(raw_data));
+        if (!cv::imencode(".jpg", rgb_image, compressed_data, params)) {
+            std::cerr << "Failed to compress image with OpenCV." << std::endl;
+            return 1;
+        }
 
         // 5. Save the compressed data
         std::ofstream outfile(argv[2], std::ios::binary);

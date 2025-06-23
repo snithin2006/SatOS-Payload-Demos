@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Build directories
+build/
+**/build/
+
+# IDE files
+.vscode/
+.idea/
+
+# Test images and data
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Compiled files
+*.o
+*.so
+*.a
+*.out 
