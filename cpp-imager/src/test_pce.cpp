@@ -1,5 +1,6 @@
 #include "image_processor.hpp"
 #include "include/cuda_encryptor.hpp"
+#include "include/jpeg_compressor.hpp"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -29,14 +30,9 @@ int main(int argc, char* argv[]) {
         int height = processor.getHeight();
         int channels = processor.getChannels();
 
-        // 4. Compress with OpenCV
-        std::vector<uchar> compressed_data;
-        std::vector<int> params = {cv::IMWRITE_JPEG_QUALITY, 90};
-        cv::Mat rgb_image(height, width, CV_8UC3, const_cast<unsigned char*>(raw_data));
-        if (!cv::imencode(".jpg", rgb_image, compressed_data, params)) {
-            std::cerr << "Failed to compress image with OpenCV." << std::endl;
-            return 1;
-        }
+        // 4. Compress with JpegCompressor
+        JpegCompressor compressor(90);
+        std::vector<uchar> compressed_data = compressor.compress(raw_data, width, height, channels);
 
         // 5. Save the compressed JPEG
         std::ofstream outfile(argv[2], std::ios::binary);

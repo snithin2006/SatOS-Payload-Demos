@@ -1,4 +1,4 @@
-#include "image_processor.hpp"
+#include "opencv_processor.hpp"
 #include <iostream>
 
 bool ImageProcessor::loadImage(const std::string& filepath, int flags) {

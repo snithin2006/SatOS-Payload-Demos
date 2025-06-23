@@ -1,7 +1,8 @@
-#include "image_processor.hpp"
+#include "opencv_processor.hpp"
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <fstream>
+#include "opencv_compressor.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -26,14 +27,9 @@ int main(int argc, char* argv[]) {
         int height = processor.getHeight();
         int channels = processor.getChannels();
 
-        // 4. Use this data with OpenCV to compress to JPEG
-        std::vector<uchar> compressed_data;
-        std::vector<int> params = {cv::IMWRITE_JPEG_QUALITY, 90};
-        cv::Mat rgb_image(height, width, CV_8UC3, const_cast<unsigned char*>(raw_data));
-        if (!cv::imencode(".jpg", rgb_image, compressed_data, params)) {
-            std::cerr << "Failed to compress image with OpenCV." << std::endl;
-            return 1;
-        }
+        // 4. Use JpegCompressor to compress to JPEG
+        JpegCompressor compressor(90);
+        std::vector<uchar> compressed_data = compressor.compress(raw_data, width, height, channels);
 
         // 5. Save the compressed data
         std::ofstream outfile(argv[2], std::ios::binary);
