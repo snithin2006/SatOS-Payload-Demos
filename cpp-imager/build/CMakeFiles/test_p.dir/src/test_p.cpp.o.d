@@ -1,6 +1,6 @@
-CMakeFiles/test_image_processor.dir/src/test_image_processor.cpp.o: \
-  /Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/test_image_processor.cpp \
-  /Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/include/image_processor.hpp \
+CMakeFiles/test_p.dir/src/test_p.cpp.o: \
+  /Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/test_p.cpp \
+  /Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/include/opencv_processor.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/opencv.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/opencv_modules.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core.hpp \

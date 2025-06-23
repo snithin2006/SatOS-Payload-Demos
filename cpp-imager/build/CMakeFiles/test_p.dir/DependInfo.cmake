@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/image_processor.cpp" "CMakeFiles/test_image_processor.dir/src/image_processor.cpp.o" "gcc" "CMakeFiles/test_image_processor.dir/src/image_processor.cpp.o.d"
-  "/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/test_image_processor.cpp" "CMakeFiles/test_image_processor.dir/src/test_image_processor.cpp.o" "gcc" "CMakeFiles/test_image_processor.dir/src/test_image_processor.cpp.o.d"
+  "/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/opencv_processor.cpp" "CMakeFiles/test_p.dir/src/opencv_processor.cpp.o" "gcc" "CMakeFiles/test_p.dir/src/opencv_processor.cpp.o.d"
+  "/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/test_p.cpp" "CMakeFiles/test_p.dir/src/test_p.cpp.o" "gcc" "CMakeFiles/test_p.dir/src/test_p.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

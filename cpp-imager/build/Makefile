@@ -117,129 +117,129 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named cpp_imager
+# Target rules for targets named test_p
 
 # Build rule for target.
-cpp_imager: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cpp_imager
-.PHONY : cpp_imager
+test_p: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_p
+.PHONY : test_p
 
 # fast build rule for target.
-cpp_imager/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/build
-.PHONY : cpp_imager/fast
+test_p/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/build
+.PHONY : test_p/fast
 
 #=============================================================================
-# Target rules for targets named test_image_processor
+# Target rules for targets named test_pc
 
 # Build rule for target.
-test_image_processor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_image_processor
-.PHONY : test_image_processor
+test_pc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_pc
+.PHONY : test_pc
 
 # fast build rule for target.
-test_image_processor/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/build
-.PHONY : test_image_processor/fast
+test_pc/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/build
+.PHONY : test_pc/fast
 
-src/image_processor.o: src/image_processor.cpp.o
-.PHONY : src/image_processor.o
-
-# target to build an object file
-src/image_processor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/image_processor.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/src/image_processor.cpp.o
-.PHONY : src/image_processor.cpp.o
-
-src/image_processor.i: src/image_processor.cpp.i
-.PHONY : src/image_processor.i
-
-# target to preprocess a source file
-src/image_processor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/image_processor.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/src/image_processor.cpp.i
-.PHONY : src/image_processor.cpp.i
-
-src/image_processor.s: src/image_processor.cpp.s
-.PHONY : src/image_processor.s
-
-# target to generate assembly for a file
-src/image_processor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/image_processor.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/src/image_processor.cpp.s
-.PHONY : src/image_processor.cpp.s
-
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/opencv_compressor.o: src/opencv_compressor.cpp.o
+.PHONY : src/opencv_compressor.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/opencv_compressor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/opencv_compressor.cpp.o
+.PHONY : src/opencv_compressor.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/opencv_compressor.i: src/opencv_compressor.cpp.i
+.PHONY : src/opencv_compressor.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/opencv_compressor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/opencv_compressor.cpp.i
+.PHONY : src/opencv_compressor.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/opencv_compressor.s: src/opencv_compressor.cpp.s
+.PHONY : src/opencv_compressor.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/opencv_compressor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/opencv_compressor.cpp.s
+.PHONY : src/opencv_compressor.cpp.s
 
-src/nvjpeg_compressor.o: src/nvjpeg_compressor.cpp.o
-.PHONY : src/nvjpeg_compressor.o
+src/opencv_processor.o: src/opencv_processor.cpp.o
+.PHONY : src/opencv_processor.o
 
 # target to build an object file
-src/nvjpeg_compressor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/nvjpeg_compressor.cpp.o
-.PHONY : src/nvjpeg_compressor.cpp.o
+src/opencv_processor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/src/opencv_processor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/opencv_processor.cpp.o
+.PHONY : src/opencv_processor.cpp.o
 
-src/nvjpeg_compressor.i: src/nvjpeg_compressor.cpp.i
-.PHONY : src/nvjpeg_compressor.i
+src/opencv_processor.i: src/opencv_processor.cpp.i
+.PHONY : src/opencv_processor.i
 
 # target to preprocess a source file
-src/nvjpeg_compressor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/nvjpeg_compressor.cpp.i
-.PHONY : src/nvjpeg_compressor.cpp.i
+src/opencv_processor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/src/opencv_processor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/opencv_processor.cpp.i
+.PHONY : src/opencv_processor.cpp.i
 
-src/nvjpeg_compressor.s: src/nvjpeg_compressor.cpp.s
-.PHONY : src/nvjpeg_compressor.s
+src/opencv_processor.s: src/opencv_processor.cpp.s
+.PHONY : src/opencv_processor.s
 
 # target to generate assembly for a file
-src/nvjpeg_compressor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_imager.dir/build.make CMakeFiles/cpp_imager.dir/src/nvjpeg_compressor.cpp.s
-.PHONY : src/nvjpeg_compressor.cpp.s
+src/opencv_processor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/src/opencv_processor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/opencv_processor.cpp.s
+.PHONY : src/opencv_processor.cpp.s
 
-src/test_image_processor.o: src/test_image_processor.cpp.o
-.PHONY : src/test_image_processor.o
+src/test_p.o: src/test_p.cpp.o
+.PHONY : src/test_p.o
 
 # target to build an object file
-src/test_image_processor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/src/test_image_processor.cpp.o
-.PHONY : src/test_image_processor.cpp.o
+src/test_p.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/src/test_p.cpp.o
+.PHONY : src/test_p.cpp.o
 
-src/test_image_processor.i: src/test_image_processor.cpp.i
-.PHONY : src/test_image_processor.i
+src/test_p.i: src/test_p.cpp.i
+.PHONY : src/test_p.i
 
 # target to preprocess a source file
-src/test_image_processor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/src/test_image_processor.cpp.i
-.PHONY : src/test_image_processor.cpp.i
+src/test_p.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/src/test_p.cpp.i
+.PHONY : src/test_p.cpp.i
 
-src/test_image_processor.s: src/test_image_processor.cpp.s
-.PHONY : src/test_image_processor.s
+src/test_p.s: src/test_p.cpp.s
+.PHONY : src/test_p.s
 
 # target to generate assembly for a file
-src/test_image_processor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_image_processor.dir/build.make CMakeFiles/test_image_processor.dir/src/test_image_processor.cpp.s
-.PHONY : src/test_image_processor.cpp.s
+src/test_p.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_p.dir/build.make CMakeFiles/test_p.dir/src/test_p.cpp.s
+.PHONY : src/test_p.cpp.s
+
+src/test_pc.o: src/test_pc.cpp.o
+.PHONY : src/test_pc.o
+
+# target to build an object file
+src/test_pc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/test_pc.cpp.o
+.PHONY : src/test_pc.cpp.o
+
+src/test_pc.i: src/test_pc.cpp.i
+.PHONY : src/test_pc.i
+
+# target to preprocess a source file
+src/test_pc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/test_pc.cpp.i
+.PHONY : src/test_pc.cpp.i
+
+src/test_pc.s: src/test_pc.cpp.s
+.PHONY : src/test_pc.s
+
+# target to generate assembly for a file
+src/test_pc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pc.dir/build.make CMakeFiles/test_pc.dir/src/test_pc.cpp.s
+.PHONY : src/test_pc.cpp.s
 
 # Help Target
 help:
@@ -249,20 +249,20 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... cpp_imager"
-	@echo "... test_image_processor"
-	@echo "... src/image_processor.o"
-	@echo "... src/image_processor.i"
-	@echo "... src/image_processor.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/nvjpeg_compressor.o"
-	@echo "... src/nvjpeg_compressor.i"
-	@echo "... src/nvjpeg_compressor.s"
-	@echo "... src/test_image_processor.o"
-	@echo "... src/test_image_processor.i"
-	@echo "... src/test_image_processor.s"
+	@echo "... test_p"
+	@echo "... test_pc"
+	@echo "... src/opencv_compressor.o"
+	@echo "... src/opencv_compressor.i"
+	@echo "... src/opencv_compressor.s"
+	@echo "... src/opencv_processor.o"
+	@echo "... src/opencv_processor.i"
+	@echo "... src/opencv_processor.s"
+	@echo "... src/test_p.o"
+	@echo "... src/test_p.i"
+	@echo "... src/test_p.s"
+	@echo "... src/test_pc.o"
+	@echo "... src/test_pc.i"
+	@echo "... src/test_pc.s"
 .PHONY : help
 
 

@@ -1,2 +1,2 @@
-# Empty dependencies file for cpp_imager.
+# Empty dependencies file for test_pc.
 # This may be replaced when dependencies are built.
