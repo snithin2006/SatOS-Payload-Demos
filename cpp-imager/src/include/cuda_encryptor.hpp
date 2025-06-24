@@ -7,8 +7,7 @@
 // Supported AES modes
 enum class AESMode {
     ECB,
-    CBC,
-    CTR
+    CBC
 };
 
 class CudaEncryptor {
@@ -23,12 +22,4 @@ private:
     std::vector<uint8_t> key_;
     std::vector<uint8_t> iv_;
     AESMode mode_;
-
-    // Device pointers
-    uint8_t* d_key_;
-    uint8_t* d_iv_;
-
-    void allocateDeviceMemory();
-    void freeDeviceMemory();
-    void copyKeyAndIVToDevice();
 }; 

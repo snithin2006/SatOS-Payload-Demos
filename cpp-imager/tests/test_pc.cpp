@@ -1,8 +1,8 @@
 #include "opencv_processor.hpp"
+#include "opencv_compressor.hpp"
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <fstream>
-#include "opencv_compressor.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {

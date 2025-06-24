@@ -1,6 +1,6 @@
-#include "image_processor.hpp"
-#include "include/cuda_encryptor.hpp"
-#include "include/jpeg_compressor.hpp"
+#include "opencv_processor.hpp"
+#include "cuda_encryptor.hpp"
+#include "opencv_compressor.hpp"
 #include <iostream>
 #include <fstream>
 #include <vector>

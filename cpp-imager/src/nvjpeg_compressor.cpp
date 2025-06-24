@@ -1,4 +1,4 @@
-#include "include/nvjpeg_compressor.hpp"
+#include "nvjpeg_compressor.hpp"
 #include <iostream>
 
 NVJPEGCompressor::NVJPEGCompressor() : initialized_(false) {

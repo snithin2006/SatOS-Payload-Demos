@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/cpp-imager/src/include",
+                "${workspaceFolder}/cpp-imager/src",
+                "${workspaceFolder}/cpp-imager/src/aes_lib",
+                "${workspaceFolder}/cpp-imager/tests",
+                "${workspaceFolder}/**",
+                "/opt/homebrew/include/opencv4",
+                "/usr/local/cuda/include"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

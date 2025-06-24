@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/include -isystem /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4
+CXX_INCLUDES = -I/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/include -I/Users/nithinsivakumar/dev/Work/Antaris/SatOS-Payload-Demos/cpp-imager/src/aes_lib -isystem /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -Wall -Wextra
 

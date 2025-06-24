@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(cpp_imager)
 
+# Enable CUDA language
+enable_language(CUDA)
+
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,37 +15,28 @@ find_package(OpenCV REQUIRED)
 include_directories(
     ${OpenCV_INCLUDE_DIRS}
     ${CMAKE_SOURCE_DIR}/src/include
+    ${CMAKE_SOURCE_DIR}/src/aes_lib
 )
 
-# Add executables for your actual test files
-add_executable(test_p src/test_p.cpp src/opencv_processor.cpp)
-add_executable(test_pc src/test_pc.cpp src/opencv_processor.cpp src/opencv_compressor.cpp)
+# Add executables for each test with their required implementation files
+add_executable(test_p tests/test_p.cpp src/opencv_processor.cpp)
+add_executable(test_pc tests/test_pc.cpp src/opencv_processor.cpp src/opencv_compressor.cpp)
+add_executable(test_pce tests/test_pce.cpp src/opencv_processor.cpp src/opencv_compressor.cpp src/cuda_encryptor.cu src/aes_lib/aes_cuda_lib.cu)
+add_executable(test_e tests/test_e.cpp src/cuda_encryptor.cu src/aes_lib/aes_cuda_lib.cu)
 
-# Only build CUDA-dependent target if CUDA is available
-include(CheckLanguage)
-check_language(CUDA)
-if(CMAKE_CUDA_COMPILER)
-    enable_language(CUDA)
-    add_executable(test_pce src/test_pce.cpp src/opencv_processor.cpp src/opencv_compressor.cpp src/cuda_encryptor.cu)
-    set_target_properties(test_pce PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-    target_link_libraries(test_pce ${OpenCV_LIBS})
-endif()
+# Set CUDA properties for executables that use CUDA
+set_target_properties(test_pce PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+set_target_properties(test_e PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 
 # Link OpenCV to all targets
-target_link_libraries(test_p ${OpenCV_LIBS})
-target_link_libraries(test_pc ${OpenCV_LIBS})
-
-if(TARGET test_pce)
-    target_link_libraries(test_pce ${OpenCV_LIBS})
-    target_compile_options(test_pce PRIVATE -Wall -Wextra)
-endif()
+foreach(tgt test_p test_pc test_pce test_e)
+    if(TARGET ${tgt})
+        target_link_libraries(${tgt} ${OpenCV_LIBS})
+        target_compile_options(${tgt} PRIVATE -Wall -Wextra)
+    endif()
+endforeach()
 
 # Print OpenCV status
 message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
 message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS}")
 
-# Set compiler flags
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(test_p PRIVATE -Wall -Wextra)
-    target_compile_options(test_pc PRIVATE -Wall -Wextra)
-endif()
