@@ -57,7 +57,7 @@ class ImagerController:
 
         logger.info(f"captured image: file={filename}")
 
-        ctx.client.stage_file_download(filename)
+        ctx.client.stage_file_download(filename, 0)
 
     # Capture a single image and stage for download.
     def handle_capture_adhoc(self, ctx):
@@ -103,6 +103,41 @@ class ImagerController:
         logger.info(f"wrote diagnostics: file={dst}")
 
         ctx.client.stage_file_download(dst)
+        
+    def handle_cloud_cover_detection(self, ctx):
+        src = self.imgr.capture()
+        src_last = pathlib.Path(src).name
+
+        ts = int(datetime.datetime.now().timestamp())
+        filename = f"{ts}-{src_last}"
+        absdst = f"/opt/antaris/outbound/{filename}"
+        compressed_dst = f"/opt/antaris/compressed/{filename}"
+        encrypted_dst = f"/opt/antaris/encrypted/{filename}"
+
+        # Ensure directories exist
+        for d in ["/opt/antaris/compressed", "/opt/antaris/encrypted"]:
+            os.makedirs(d, exist_ok=True)
+
+        # Write to outbound
+        with open(src, 'rb') as sf:
+            with open(absdst, 'wb') as df:
+                df.write(sf.read())
+
+        # Copy to compressed
+        with open(src, 'rb') as sf:
+            with open(compressed_dst, 'wb') as df:
+                df.write(sf.read())
+
+        # Copy to encrypted
+        with open(src, 'rb') as sf:
+            with open(encrypted_dst, 'wb') as df:
+                df.write(sf.read())
+
+        self.capture_count += 1
+
+        logger.info(f"captured image: file={filename}")
+
+        ctx.client.stage_file_download(filename, 0)
 
 
 if __name__ == '__main__':
@@ -120,6 +155,8 @@ if __name__ == '__main__':
     pa.mount_sequence("CaptureSpot", ctl.handle_capture_adhoc)
     pa.mount_sequence("CaptureRepeat", ctl.handle_capture_repeat)
     pa.mount_sequence("DumpDiagnostics", ctl.handle_dump_diagnostics)
+    pa.mount_sequence("CloudCoverDetection", ctl.handle_cloud_cover_detection)
+
 
     signal.signal(signal.SIGTERM, lambda x, y: pa.request_stop())
     signal.signal(signal.SIGINT, lambda x, y: pa.request_stop())
