@@ -1,0 +1,44 @@
+# Dockerfile for JetPack 5.x environment with nvJPEG support
+FROM ubuntu:20.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update package lists and install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    wget \
+    pkg-config \
+    libopencv-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    curl \
+    gnupg2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add NVIDIA repository for JetPack 5.x components
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/arm64/cuda-keyring_1.0-1_all.deb && \
+    dpkg -i cuda-keyring_1.0-1_all.deb && \
+    apt-get update
+
+# Install CUDA toolkit
+RUN apt-get install -y \
+    cuda-toolkit-11-4 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set CUDA environment variables
+ENV CUDA_HOME=/usr/local/cuda-11.4
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+# Try to install nvJPEG from CUDA toolkit
+RUN find /usr/local/cuda-11.4 -name "*nvjpeg*" -type f
+
+# Set up working directory
+WORKDIR /workspace
+
+# Set the default command
+CMD ["/bin/bash"] 

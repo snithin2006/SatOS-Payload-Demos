@@ -4,16 +4,20 @@
 #include <iostream>
 #include <fstream>
 
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
+int main(int argc, char *argv[])
+{
+    if (argc != 3)
+    {
         std::cerr << "Usage: " << argv[0] << " <input_image> <output_jpeg>" << std::endl;
         return 1;
     }
 
-    try {
+    try
+    {
         // 1. Create and load image
         ImageProcessor processor;
-        if (!processor.loadImage(argv[1])) {
+        if (!processor.loadImage(argv[1]))
+        {
             std::cerr << "Failed to load image: " << argv[1] << std::endl;
             return 1;
         }
@@ -22,7 +26,7 @@ int main(int argc, char* argv[]) {
         processor.convertBGRtoRGB();
 
         // 3. Get the raw pixel data and dimensions
-        const unsigned char* raw_data = processor.getRawPixelData();
+        const unsigned char *raw_data = processor.getRawPixelData();
         int width = processor.getWidth();
         int height = processor.getHeight();
         int channels = processor.getChannels();
@@ -33,18 +37,20 @@ int main(int argc, char* argv[]) {
 
         // 5. Save the compressed data
         std::ofstream outfile(argv[2], std::ios::binary);
-        if (!outfile) {
+        if (!outfile)
+        {
             std::cerr << "Failed to open output file: " << argv[2] << std::endl;
             return 1;
         }
 
-        outfile.write(reinterpret_cast<const char*>(compressed_data.data()),
-                     compressed_data.size());
+        outfile.write(reinterpret_cast<const char *>(compressed_data.data()),
+                      compressed_data.size());
 
         std::cout << "Successfully compressed image to: " << argv[2] << std::endl;
         return 0;
-
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }

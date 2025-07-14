@@ -6,7 +6,8 @@
 #include <string>
 #include <stdexcept>
 
-class NVJPEGCompressor {
+class NVJPEGCompressor
+{
 public:
     NVJPEGCompressor();
     ~NVJPEGCompressor();
@@ -15,21 +16,20 @@ public:
     void initialize();
 
     // Add more encoder parameters
-    void setHuffmanTable(const std::string& table);
+    void setHuffmanTable(const std::string &table);
     void setChromaSubsampling(nvjpegChromaSubsampling_t subsampling);
-    
+
     // Add planar format support
     void setInputFormat(nvjpegInputFormat_t format);
-    
+
     // Add more detailed compression options
     std::vector<unsigned char> compress(
-        const unsigned char* input_data,
+        const unsigned char *input_data,
         int width,
         int height,
         int channels,
         int quality = 90,
-        nvjpegChromaSubsampling_t subsampling = NVJPEG_CSS_444
-    );
+        nvjpegChromaSubsampling_t subsampling = NVJPEG_CSS_444);
 
     // Get compression status
     bool isInitialized() const;
@@ -41,7 +41,7 @@ private:
     bool initialized_;
 
     // Helper functions
-    void checkCudaError(cudaError_t error, const char* msg);
-    void checkNVJPEGError(nvjpegStatus_t status, const char* msg);
+    void checkCudaError(cudaError_t error, const char *msg);
+    void checkNVJPEGError(nvjpegStatus_t status, const char *msg);
     void cleanup();
-}; 
+};
